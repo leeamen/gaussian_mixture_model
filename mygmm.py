@@ -87,6 +87,7 @@ class MyGMM(object):
         mu = self.mus[i]
         sigma = self.sigmas[i]
         alpha = self.alphas[i]
+        #print('sigma alpha', sigma, alpha)
         g = self.__calc_gaussian(x[j], n, mu, sigma)
         s += g * alpha
       ll += np.log(s)
@@ -153,7 +154,7 @@ class MyGMM(object):
   def Predict(self, x):
     posterior = self.__cacl_posterior(x)
     logger.debug('posterior:\n%s', posterior)
-    pred = myfunction.HArgmax(posterior, len(posterior))
+    pred = myfunc.HArgmax(posterior, len(posterior))
     return pred
 
 if __name__ == '__main__':
